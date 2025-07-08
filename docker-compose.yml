@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  demoapi:
+    image: ksanjay/demoapi
+    ports:
+      - '8080:80'
+    networks:
+      - demo-network
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+
+networks:
+  demo-network:
+    driver: overlay
