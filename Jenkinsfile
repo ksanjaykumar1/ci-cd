@@ -48,8 +48,7 @@ pipeline {
                 script {
                     sh """
                     ssh -o StrictHostKeyChecking=no ${REMOTE_SERVER_USR}@${REMOTE_HOST} << 'ENDSSH'
-                    docker service update --force demoapp_demoapi
-                    """  
+                    docker service update --force --image ksanjayk/demoapi:latest demoapp_demoapi                    """  
                 }
                     
             }
