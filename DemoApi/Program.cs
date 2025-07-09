@@ -21,7 +21,7 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/", () => "Hello from .NET 8 Web API!, Deployment 4");
+app.MapGet("/", () => "Hello from .NET 8 Web API!, Deployment 5");
 
 app.MapGet("/weatherforecast", () =>
 {

@@ -50,7 +50,7 @@ pipeline {
                     ssh -o StrictHostKeyChecking=no ${REMOTE_SERVER_USR}@${REMOTE_HOST} << 'ENDSSH'
                         docker pull ksanjayk/demoapi:latest
                         docker service update --force --image ksanjayk/demoapi:latest demoapp_demoapi
-                        ENDSSH       
+                    ENDSSH       
                     """  
                 }
                     
