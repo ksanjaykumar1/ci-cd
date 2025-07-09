@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         DOCKER_CREDS = credentials('dockerhub-creds')
+        REMOTE_HOST = credentials('remote-host')
+        REMOTE_SERVER_USR = credentials('remote-server-user')
     }
 
     stages {
@@ -40,6 +42,15 @@ pipeline {
                     sh 'docker compose push'
                 }
             }
+        }
+        steps {
+            script {
+                sh """
+                ssh -o StrictHostKeyChecking=no ${REMOTE_SERVER_USR}@${REMOTE_HOST} << 'ENDSSH'
+                docker service update --force demoapp_demoapi
+                """  
+            }
+               
         }
     }
 
