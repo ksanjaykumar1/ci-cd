@@ -43,14 +43,16 @@ pipeline {
                 }
             }
         }
-        steps {
-            script {
-                sh """
-                ssh -o StrictHostKeyChecking=no ${REMOTE_SERVER_USR}@${REMOTE_HOST} << 'ENDSSH'
-                docker service update --force demoapp_demoapi
-                """  
+        stage('ReDeploy') {
+            steps {
+                script {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no ${REMOTE_SERVER_USR}@${REMOTE_HOST} << 'ENDSSH'
+                    docker service update --force demoapp_demoapi
+                    """  
+                }
+                    
             }
-               
         }
     }
 
